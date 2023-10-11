@@ -19,9 +19,10 @@ public class UserController {
 	
 	@PostMapping("/create")
 	public ResponseEntity<User> create (@RequestBody User user){
-		User res = service.save(user);
-		if (res != null) {
-			return ResponseEntity.ok(res);
+		User res = service.findByUserName(user);
+		if (user != null && user != res) {
+			service.save(user);
+			return ResponseEntity.ok(user);
 		}
 		return ResponseEntity.notFound().build();
 	}

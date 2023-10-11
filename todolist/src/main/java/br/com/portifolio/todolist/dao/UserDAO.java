@@ -10,5 +10,5 @@ import java.util.UUID;
 
 @Repository
 public interface UserDAO extends JpaRepository<User, UUID>{
-	public List<User> findByusernameContaining(String key);
+	public boolean findByuserNameContaining(String key);
 }

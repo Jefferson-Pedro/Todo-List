@@ -12,4 +12,5 @@ public interface IUserService {
 	public boolean delete(UUID id);
 	public List<User> findAll();
 	public User findById(UUID id);
+	public User findByUserName(String user);
 }

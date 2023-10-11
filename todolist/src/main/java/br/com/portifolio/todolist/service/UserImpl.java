@@ -59,5 +59,15 @@ public class UserImpl implements IUserService{
 	public User findById(UUID id) {
 		return dao.findById(id).orElse(null);
 	}
+	
+	public User findByUserName(User user) {
+		User res = dao.findByuserNameContaining(user.getUsername());
+		if (res != null) {
+		  
+		} else {
+		  // Não existe um usuário com o nome de usuário especificado no banco de dados.
+		}
+		
+	}
 
 }

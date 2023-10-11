@@ -20,7 +20,7 @@ public class User {
 	private UUID id;
 	
 	@Column(name = "username")
-	private String username;
+	private String userName;
 	
 	@Column(name = "name")
 	private String name;
@@ -45,11 +45,11 @@ public class User {
 	}
 	
 	public String getUsername() {
-		return username;
+		return userName;
 	}
 	
 	public void setUsername(String username) {
-		this.username = username;
+		this.userName = username;
 	}
 	public String getName() {
 		return name;
