@@ -8,6 +8,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import at.favre.lib.crypto.bcrypt.BCrypt;
 import br.com.portifolio.todolist.dao.UserDAO;
 import br.com.portifolio.todolist.model.User;
 
@@ -19,7 +20,10 @@ public class UserImpl implements IUserService{
 
 	@Override
 	public User save(User novo) {
-		if(novo != null) {
+		if(novo != null) {			
+			novo.setPassword(BCrypt.withDefaults()
+				.hashToString(12, novo.getPassword()
+				.toCharArray()));
 			return dao.save(novo);
 		}
 		System.err.println("O objeto User está null");
