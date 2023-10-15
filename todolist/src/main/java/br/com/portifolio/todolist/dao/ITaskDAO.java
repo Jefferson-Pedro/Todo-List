@@ -14,4 +14,5 @@ import br.com.portifolio.todolist.model.Task;
 public interface ITaskDAO extends JpaRepository<Task, UUID> {
     public Optional<Task> findBytitleContaining(String key);
     public List<Task> findByidUser(UUID idUser);
+    public Task findByIdUser(UUID idUser);
 }

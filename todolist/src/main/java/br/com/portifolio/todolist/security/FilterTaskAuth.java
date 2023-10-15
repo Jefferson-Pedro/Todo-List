@@ -27,7 +27,9 @@ public class FilterTaskAuth extends OncePerRequestFilter {
 
         String servletPath = request.getServletPath();
 
-        if (servletPath.equals("/tasks/create" ) || servletPath.equals("/tasks/listTaskUser")) {
+        System.out.println("Path: " + servletPath);
+
+        if (servletPath.startsWith("/tasks/")) {
 
             // Pegar a autenticação (informação de usuario e senha)
             String auth = request.getHeader("Authorization");
@@ -57,10 +59,10 @@ public class FilterTaskAuth extends OncePerRequestFilter {
                 if (passwordMatch) {
                     // Se a senha for válida, seta-a na tarefa.
                     request.setAttribute("idUser", user.getId());
-                    System.out.println(">>>>>>>>>>>>>>>>> Id NO FILTRO: " + user.getId());
+                    //System.out.println(">>>>>>>>>>>>>>>>> Id NO FILTRO: " + user.getId());
                     //Segue em diante
                     filterChain.doFilter(request, response);
-                    System.out.println(">>>>>>>>>>>>>>>>> REQUEST: " + request.toString());
+                    //System.out.println(">>>>>>>>>>>>>>>>> REQUEST: " + request.toString());
                 } else {
                     response.sendError(401, "Senha incorreta!");
                 }

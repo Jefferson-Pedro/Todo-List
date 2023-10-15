@@ -22,8 +22,6 @@ public class TaskImpl implements ITaskService {
     @Override
     public boolean save(Task novo) {
         LocalDateTime date = LocalDateTime.now();
-        //if(date.isAfter(novo.getStartAt())) - Maior que a data atual
-
         //Verifica se a data de inicio e fim são maiores que a data atual
         if (date.isAfter(novo.getStartAt()) || date.isAfter(novo.getEndAt())) {
             System.err.println("A data de início/término deve ser maior que a atual");
@@ -40,15 +38,18 @@ public class TaskImpl implements ITaskService {
     }
 
     @Override
-    public Task update(Task task, UUID id) {
+    public boolean update(Task task, UUID id, Object idUser) {
         Optional<Task> res = dao.findById(id);
 	    if (res.isPresent()) {
 	    	Task existingTask = res.get();
-	        BeanUtils.copyProperties(task, existingTask, "id");
-	        return dao.save(existingTask);
+            if(existingTask.getIdUser().equals(idUser)){
+                BeanUtils.copyProperties(task, existingTask, "id", "idUser");
+                dao.save(existingTask);
+                return true;
+            }
 	    }
 	    System.err.println("Erro ao editar o usuário!");
-		return null;
+		return false ;
     }
 
     @Override

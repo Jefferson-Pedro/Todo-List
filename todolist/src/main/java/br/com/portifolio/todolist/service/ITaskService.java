@@ -9,7 +9,7 @@ import br.com.portifolio.todolist.model.Task;
 public interface ITaskService {
 
     public boolean save(Task novo);
-	public Task update(Task task, UUID id);
+	public boolean update(Task task, UUID id, Object idUser);
 	public boolean delete(UUID id);
 	public List<Task> findAll();
 	public Task findById(UUID id);
