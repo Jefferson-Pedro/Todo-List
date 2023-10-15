@@ -2,7 +2,7 @@
 <p> Uma To-Do List para criar tarefas ligadas a um usuário</p>
 
 <h3>Status do Projeto</h3>
-<p align="center"> API Ecommerce 🏆 Concluído... 🏆</p>
+<p align="center"> 🏆 Concluído... 🏆</p>
 
 <h3>Features</h3>
 
