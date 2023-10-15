@@ -1,7 +1,6 @@
 package br.com.portifolio.todolist.service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 import br.com.portifolio.todolist.model.User;
@@ -13,5 +12,6 @@ public interface IUserService {
 	public boolean delete(UUID id);
 	public List<User> findAll();
 	public User findById(UUID id);
-	public Optional<User> findByUserName(String userName);
+	// public Optional<User> findByUserName(String userName);
+	public User findByUserName(String userName);
 }

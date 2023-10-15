@@ -1,7 +1,5 @@
 package br.com.portifolio.todolist.controller;
 
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,14 +20,13 @@ public class UserController {
 	
 	@PostMapping("/create")
 	public ResponseEntity<User> create (@RequestBody User user){
-			Optional<User> res = service.findByUserName(user.getUsername());
-			if (res.isPresent()) {
+			User res = service.findByUserName(user.getUsername());
+			if (res != null) {
 				//Ver uma forma de retornar msg no Postman
-				System.err.println("O nome de usuário já existe está em uso.");
+				System.err.println("O nome de usuário já existe.");
 				return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 			}
 			service.save(user);
 			return ResponseEntity.ok(user);
 		}
-
 }

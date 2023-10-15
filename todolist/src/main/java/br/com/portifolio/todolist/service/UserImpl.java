@@ -9,14 +9,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import at.favre.lib.crypto.bcrypt.BCrypt;
-import br.com.portifolio.todolist.dao.UserDAO;
+import br.com.portifolio.todolist.dao.IUserDAO;
 import br.com.portifolio.todolist.model.User;
 
 @Component
 public class UserImpl implements IUserService{
 	
 	@Autowired
-	private UserDAO dao;
+	private IUserDAO dao;
 
 	@Override
 	public User save(User novo) {
@@ -63,9 +63,16 @@ public class UserImpl implements IUserService{
 	public User findById(UUID id) {
 		return dao.findById(id).orElse(null);
 	}
+
+	@Override
+	public User findByUserName(String userName) {
+		return dao.findByUserName(userName);
+	}
 	
-	public Optional<User> findByUserName(String userName) {
-		  return dao.findByuserNameContaining(userName);
-		}
+	// public Optional<User> findByUserName(String userName) {
+	// 	  return dao.findByuserNameContaining(userName);
+	// }
+
+	
 
 }

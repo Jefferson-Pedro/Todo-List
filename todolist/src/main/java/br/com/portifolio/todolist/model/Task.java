@@ -25,10 +25,10 @@ public class Task {
 	@Column(name = "title", length = 50)
 	private String title;
 	
-	@Column(name = "start_at")
+	@Column(name = "start_at", nullable = false)
 	private LocalDateTime startAt;
 	
-	@Column(name = "end_at")
+	@Column(name = "end_at", nullable = false)
 	private LocalDateTime endAt;
 	
 	@Column(name = "priority")

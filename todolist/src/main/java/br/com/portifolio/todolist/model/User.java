@@ -32,9 +32,7 @@ public class User {
 	private LocalDateTime createAt;
 	
 
-	public User() {
-		
-	}
+	public User() {}
 	
 	public UUID getId() {
 		return id;
@@ -74,6 +72,4 @@ public class User {
 	public void setCreateAt(LocalDateTime createAt) {
 		this.createAt = createAt;
 	}
-	
-	
 }
